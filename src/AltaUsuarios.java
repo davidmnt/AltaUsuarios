@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class GuardarDatos {
+public class AltaUsuarios {
 
     static JTextField nombre;
     static JTextField apellido;
@@ -29,7 +29,9 @@ public class GuardarDatos {
 
         JFrame ventana = new JFrame();
         ventana.setVisible(true);
-        ventana.setBounds(0, 0, 700, 850);
+        ventana.setBounds(0, 0, 800, 950);
+        ventana.setResizable(false);
+        ventana.setPreferredSize(new Dimension());
         ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         DefaultTableModel modelo = new DefaultTableModel();
@@ -42,8 +44,9 @@ public class GuardarDatos {
 
 
         JPanel panelPinc = new JPanel();
+        panelPinc.setPreferredSize(new Dimension());
         panelPinc.setLayout(new GridBagLayout());
-        panelPinc.setBounds(1, 1, 700, 850);
+        panelPinc.setBounds(1, 1, 600, 750);
 
         JLabel titulo = new JLabel("Registro de usuarios");
         titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -302,6 +305,22 @@ public class GuardarDatos {
                         0
                 ));
 
+        JLabel LabelMod = new JLabel();
+        panelPinc.add(LabelMod,
+                new GridBagConstraints(
+                        2,
+                        6,
+                        1,
+                        1,
+                        1.0,
+                        1.0,
+                        GridBagConstraints.WEST,
+                        GridBagConstraints.HORIZONTAL,
+                        new Insets(0, 20, 0, 20),
+                        0,
+                        0
+                ));
+
 
         String queryResult = "SELECT * FROM USUARIOS";
         Statement stmt = conn.createStatement();
@@ -471,7 +490,7 @@ public class GuardarDatos {
                         apellido.setText(apellidoIntroducido);
                         dni.setText(dniIntroducido);
                         email.setText(mailIntroducido);
-
+                        LabelMod.setText("Porfavor modifica el usuario y vuelve a pulsar Modificar");
                         cont = 1;
                     }
 
